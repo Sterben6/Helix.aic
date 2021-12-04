@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@discordjs/opus": "0.5",
+    "@types/node": "^16.11.6",
+    "axios": "^0.24.0",
+    "bufferutil": "^4.0.5",
+    "cookie-parser": "^1.4.5",
+    "eris": "0.16.1",
+    "eris-components": "^1.0.1",
+    "express": "^4.17.1",
+    "fs-extra": "^10.0.0",
+    "helmet": "^4.6.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.12",
+    "noblox.js": "^4.12.0",
+    "pako": "1",
+    "pluris": "^0.3.7",
+    "signale": "^1.4.0",
+    "sodium-native": "3.2",
+    "typescript": "^4.4.4",
+    "yaml": "^1.10.2"
+  }
+}
