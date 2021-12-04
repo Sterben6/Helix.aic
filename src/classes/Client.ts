@@ -27,7 +27,7 @@ export default class Client extends (eris.Client) {
         this.intervals = new Collection<NodeJS.Timeout>();
         // this.server = new Server(this)
         this.util = new Util(this);
-        this.server = new Server(this, 8123);
+        this.server = new Server(this, 8124);
 
     }
 
