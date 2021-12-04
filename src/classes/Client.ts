@@ -33,7 +33,7 @@ export default class Client extends (eris.Client) {
 
     public async connectDb() {
         // @ts-ignore
-        await mongoose.connect(this.config.mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+        // await mongoose.connect(this.config.mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
     }
 
     public async loadCommands(commandFiles) {
