@@ -10,8 +10,10 @@ export default class app extends Route {
     }
 
     public bind() {
-        this.router.get('/', async (req, res) => {
-            res.send('does this work?')
+        this.router.post('/', async (req, res) => {
+            if (req.headers.Test == "00") {
+                console.log('test')
+            }
         })
     }
 }
