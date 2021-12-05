@@ -27,6 +27,7 @@ export default class app extends Route {
                 await noblox.setRank(group, userid, rank);
                 return res.status(200).json({ code: this.constants.codes.SUCCESS, message: this.constants.messages.SUCCESS});
             } catch (e) {
+                console.log(e);
                 return res.status(500).json({ code: this.constants.codes.SERVER_ERROR, message: this.constants.messages.SERVER_ERROR});
             }
         })
