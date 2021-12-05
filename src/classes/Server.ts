@@ -39,7 +39,6 @@ export default class Server {
         console.log(`Successfully loaded route.`);
         this.routes.add(route.conf.path, route);
         this.app.use(route.conf.path, route.router);
-        this.app.listen(this.port);
     }
 
     public init() {
@@ -57,9 +56,10 @@ export default class Server {
                 },
             },
         }));
+        this.listen(this.port)
     }
 
-    public listen(port: number): HTTPServer {
+    private listen(port: number): HTTPServer {
         return this.app.listen(port);
     }
 
