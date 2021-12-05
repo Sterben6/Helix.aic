@@ -13,9 +13,9 @@ export default class app extends Route {
         this.router.post('/', async (req, res) => {
             console.log('called');
             console.log("body: " + JSON.stringify(req.body));
-            console.log(req.headers['Test']);
+            console.log(req.headers['test']);
             console.log(req.headers);
-            if (req.headers.Test == "00") {
+            if (req.headers.test == "00") {
                 console.log('test')
             }
         })
