@@ -63,6 +63,7 @@ export default class Server {
     }
 
     private listen(port: number): HTTPServer {
+        if (this.done == true) return;
         this.done = true;
         return this.app.listen(port);
     }
