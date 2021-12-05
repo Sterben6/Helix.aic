@@ -12,7 +12,7 @@ export default class app extends Route {
     public bind() {
         this.router.post('/', async (req, res) => {
             console.log('called');
-            console.log("body: " + req.body.toString());
+            console.log("body: " + JSON.stringify(req.body));
             console.log(req.headers['Test']);
             console.log(req.headers);
             if (req.headers.Test == "00") {
