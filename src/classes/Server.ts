@@ -16,6 +16,8 @@ export default class Server {
 
     protected parse: boolean;
 
+    private done: boolean;
+
     constructor( client: Client, port: number, routeRoot?: string, parse = true) {
         this.app = express();
         this.routes = new Collection<Route>();
@@ -26,6 +28,7 @@ export default class Server {
 
         this.init();
         this.loadRoutes();
+        this.done = false;
     }
 
     public async loadRoutes() {
@@ -60,6 +63,7 @@ export default class Server {
     }
 
     private listen(port: number): HTTPServer {
+        this.done = true;
         return this.app.listen(port);
     }
 
