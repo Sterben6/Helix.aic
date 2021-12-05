@@ -10,7 +10,7 @@ export default class app extends Route {
     }
 
     public bind() {
-        this.router.post('/', async (req, res) => {
+        this.router.get('/', async (req, res) => {
             res.send('does this work?')
         })
     }
