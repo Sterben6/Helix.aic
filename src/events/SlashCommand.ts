@@ -28,6 +28,6 @@ export default class SlashCommand extends Event {
             console.log(err);
             await interaction.createMessage('An error occurred and has been logged!');
         }
-        await interaction.acknowledge();
+        if (!interaction.acknowledged) await interaction.acknowledge();
     }
 }
