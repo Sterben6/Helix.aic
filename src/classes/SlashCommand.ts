@@ -1,7 +1,7 @@
 import eris, { Member, Message, TextableChannel } from 'eris'
 import { Client, Collection } from '.'
 
-export default class Command {
+export default class SlashCommand {
     /**
      * The bot client
      */
@@ -38,7 +38,7 @@ export default class Command {
     /**
      * Internal usage
      */
-    public subcommands?: Collection<Command>
+    public subcommands?: Collection<SlashCommand>
     /**
      * Sub-commands for the command, ran as "-command subcommand args"
      */
@@ -67,7 +67,7 @@ export default class Command {
 
         this.aliases = [];
 
-        this.subcommands = new Collection<Command>();
+        this.subcommands = new Collection<SlashCommand>();
 
         this.subcmds = [];
 

@@ -50,7 +50,7 @@ export default class Client extends (eris.Client) {
             delete comm.subcmds;
             this.commands.add(comm.name, comm);
             if (comm.slashCommand) {
-                await this.guilds.get('873559786833199186').createCommand({
+                await this.guilds.get('914366368168681552').createCommand({
                     name: comm.name,
                     description: comm.description,
                     type: Constants.ApplicationCommandTypes.CHAT_INPUT
