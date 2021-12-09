@@ -10,8 +10,6 @@ export default class Ready extends Event {
     }
 
     public async run() {
-        console.log('ready');
-        console.log(this.client.guilds.get('873559786833199186').id);
         await this.client.loadCommands(commandFiles);
         this.client.util.signale.start(`Client is now ready.`);
     }
