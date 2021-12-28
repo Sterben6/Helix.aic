@@ -35,6 +35,8 @@ export default class SlashCommand {
      * If true, then command cannot be ran in DMs. Default is true
      */
     public guildOnly: boolean;
+
+    public possibleGuilds: number[]
     /**
      * Internal usage
      */
