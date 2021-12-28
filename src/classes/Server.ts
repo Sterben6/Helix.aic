@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import { Server as HTTPServer } from 'http'
 import {Client, Collection, Route} from '.';
 import { main } from "../api/setrank";
+import { webhooks } from '../api/webhooks';
 
 export default class Server {
     public app: express.Application;
@@ -32,16 +33,18 @@ export default class Server {
     }
 
     public async loadRoutes() {
-        const route = new main(this);
-        if (route.conf.maintenance) {
-            route.maintenance();
-        } else {
-            route.init();
-            route.bind();
+        const routes = [new main(this), new webhooks(this)];
+        for (let route of routes) {
+            if (route.conf.maintenance) {
+                route.maintenance();
+            } else {
+                route.init();
+                route.bind();
+            }
+            console.log(`Successfully loaded route: ${route.conf.path}.`);
+            this.routes.add(route.conf.path, route);
+            this.app.use(route.conf.path, route.router);
         }
-        console.log(`Successfully loaded route.`);
-        this.routes.add(route.conf.path, route);
-        this.app.use(route.conf.path, route.router);
     }
 
     public init() {
