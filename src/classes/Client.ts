@@ -52,7 +52,12 @@ export default class Client extends (eris.Client) {
             const guilds: eris.Collection<Guild> = this.guilds;
             for (let [id, prop] of guilds) {
                 const guild = guilds.get(id);
-                const commands = await guild.getCommands();
+                let commands;
+                try {
+                    commands = await guild.getCommands();
+                } catch (e) {
+                    continue
+                }
                 for (let comm of commands) {
                     try {
                         await guild.deleteCommand(comm.id);
