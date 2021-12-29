@@ -14,10 +14,10 @@ export default class ClearanceApplication extends Event {
     public async run(message: Message, emoji: eris.Emoji, reactor: Member) {
         if (message.channel.id != "919715631501287505") return;
         let newMsg = message;
-        if (!newMsg.embeds[0]) {
+        if (!newMsg.embeds) {
             newMsg = await message.channel.getMessage(message.id);
         }
-        if (!newMsg.embeds[0]) return;
+        if (!newMsg.embeds) return;
         if (emoji.id == "920485561976897566") return;
 
         const embed: eris.Embed = newMsg.embeds[0];
