@@ -1,5 +1,5 @@
 import { Config } from "../../types";
-import eris, {Constants} from 'eris';
+import eris, {Constants, Guild} from 'eris';
 import pluris from 'pluris';
 import mongoose, {CallbackWithoutResult} from 'mongoose';
 import { Collection, Command, Event, Util, Server } from '.';
@@ -49,6 +49,14 @@ export default class Client extends (eris.Client) {
             }
             delete comm.subcmds;
             this.commands.add(comm.name, comm);
+            const guilds: eris.Collection<Guild> = this.guilds;
+            for (let [id, prop] of guilds) {
+                const guild = guilds.get(id);
+                const commands = await guild.getCommands();
+                for (let comm of commands) {
+                    await guild.deleteCommand(comm.id);
+                }
+            }
             if (comm.slashCommand) {
                 await this.guilds.get('914366368168681552').createCommand({
                     name: comm.name,
