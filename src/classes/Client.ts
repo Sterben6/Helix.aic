@@ -54,7 +54,11 @@ export default class Client extends (eris.Client) {
                 const guild = guilds.get(id);
                 const commands = await guild.getCommands();
                 for (let comm of commands) {
-                    await guild.deleteCommand(comm.id);
+                    try {
+                        await guild.deleteCommand(comm.id);
+                    } catch (e) {
+
+                    }
                 }
             }
             if (comm.slashCommand) {
