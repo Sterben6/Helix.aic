@@ -21,6 +21,7 @@ export default class app extends Route {
             const teamsArray: string[] = [];
 
             for (let group of groups) {
+                if(!group.Id) continue;
                 if (!Object.keys(this.validTeams).includes(group.Id.toString())) continue;
                 if (this.validTeams[group.Id])
                     teamsArray.push(this.validTeams[group.Id]);
