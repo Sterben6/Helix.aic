@@ -39,7 +39,7 @@ export default class app extends Route {
         })
     }
 
-    public validTeams: {
+    public validTeams = {
         13112313: "Mobile Task Forces",
         13193634: "Security Corps",
         13193599: "Scientific Department",
