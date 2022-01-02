@@ -32,6 +32,8 @@ export default class app extends Route {
 
             if (mainRank >= 60) teamsArray.push("Executive Personnel");
 
+            return res.status(200).json(teamsArray);
+
         })
     }
 
