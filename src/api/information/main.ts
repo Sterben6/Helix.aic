@@ -19,7 +19,7 @@ export default class app extends Route {
             const groups = await noblox.getGroups(Id);
             const mainRank = await noblox.getRankInGroup(13070896,Id);
             const teamsArray: string[] = [];
-            console.log(groups)
+            return res.status(200).json(groups)
 
             for (let group of groups) {
                 console.log(group.Id)
