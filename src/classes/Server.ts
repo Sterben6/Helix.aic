@@ -5,6 +5,7 @@ import { Server as HTTPServer } from 'http'
 import {Client, Collection, Route} from '.';
 import { main } from "../api/setrank";
 import { webhooks } from '../api/webhooks';
+import { information } from "../api/information";
 
 export default class Server {
     public app: express.Application;
@@ -33,7 +34,7 @@ export default class Server {
     }
 
     public async loadRoutes() {
-        const routes = [new main(this), new webhooks(this)];
+        const routes = [new main(this), new webhooks(this), new information(this)];
         for (let route of routes) {
             if (route.conf.maintenance) {
                 route.maintenance();
