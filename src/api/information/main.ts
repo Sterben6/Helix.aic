@@ -19,12 +19,9 @@ export default class app extends Route {
             const groups = await noblox.getGroups(Id);
             const mainRank = await noblox.getRankInGroup(13070896,Id);
             const teamsArray: string[] = [];
-            return res.status(200).json(groups)
 
             for (let group of groups) {
-                console.log(group.Id)
-                console.log(typeof this.validTeams);
-                if (!this.validTeams.valueOf())
+                if (!Object.keys(this.validTeams).includes(String(group.Id))) continue;
                 if (this.validTeams[group.Id])
                     teamsArray.push(this.validTeams[group.Id]);
             }
