@@ -21,6 +21,7 @@ export default class app extends Route {
             const teamsArray: string[] = [];
 
             for (let group of groups) {
+                if (!this.validTeams[group.Id]) continue;
                 if (this.validTeams[group.Id]) teamsArray.push(this.validTeams[group.Id])
             }
             if (mainRank >= 30) teamsArray.push("Foundation Personnel");
