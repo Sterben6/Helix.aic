@@ -14,18 +14,18 @@ export default class app extends Route {
         this.router.get('/teams/:Id', async (req, res) => {
             if (!req.params.Id) {
                 return res.status(400).json({ code: this.constants.codes.CLIENT_ERROR, message: this.constants.messages.CLIENT_ERROR});
-            };
+            }
             const Id: number = Number(req.params.Id);
             const groups = await noblox.getGroups(Id);
             const mainRank = await noblox.getRankInGroup(13070896,Id);
             const teamsArray: string[] = [];
 
             for (let group of groups) {
-                try {
-                    if (this.validTeams[group.Id]) teamsArray.push(this.validTeams[group.Id])
-                } catch(e) {
-
-                }
+                console.log(group.Id)
+                console.log(typeof this.validTeams);
+                if (!this.validTeams.valueOf())
+                if (this.validTeams[group.Id])
+                    teamsArray.push(this.validTeams[group.Id]);
             }
             if (mainRank >= 30) teamsArray.push("Foundation Personnel");
             else teamsArray.push("Test Subjects");
