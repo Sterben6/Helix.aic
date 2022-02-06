@@ -29,7 +29,7 @@ export default class ClearanceApplication extends Event {
             try {
                 await noblox.setRank(13070896, userId, this.typeToRank[levelType])
             } catch (e) {
-                return;
+                this.client.util.signale.error(e);
             }
             const username = await noblox.getUsernameFromId(userId);
             const channel = this.client.guilds.get('914366368168681552').channels.get('925689294285328404');
