@@ -27,7 +27,7 @@ export default class ClearanceApplication extends Event {
         const accepted = emoji.id == "925554530031116372";
         if (accepted) {
             try {
-                await noblox.setRank(13070896, userId, this.typeToRank[levelType])
+                await this.client.util.setRank(userId, this.typeToRank[levelType], 13070896)
             } catch (e) {
                 this.client.util.signale.error(e);
             }

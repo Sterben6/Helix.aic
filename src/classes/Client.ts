@@ -1,7 +1,7 @@
 import { Config } from "../../types";
 import eris, {Constants, Guild} from 'eris';
 import pluris from 'pluris';
-import mongoose, {CallbackWithoutResult} from 'mongoose';
+// import mongoose, {CallbackWithoutResult} from 'mongoose';
 import { Collection, Command, Event, Util, Server } from '.';
 
 // @ts-ignore
@@ -20,14 +20,16 @@ export default class Client extends (eris.Client) {
 
     public util: Util;
 
-    constructor(token: string, options?: eris.ClientOptions) {
+    public cookie: string;
+
+    constructor(token: string, cookie: string, options?: eris.ClientOptions) {
         super(token, options);
         this.commands = new Collection<Command>();
         this.events = new Collection<Event>();
         this.intervals = new Collection<NodeJS.Timeout>();
-        // this.server = new Server(this)
         this.util = new Util(this);
         this.server = new Server(this, 8124);
+        this.cookie = cookie;
 
     }
 

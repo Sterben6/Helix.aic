@@ -3,6 +3,7 @@ import { Client, Command, RichEmbed } from '.';
 import noblox from 'noblox.js';
 import signale from 'signale';
 import { Member, Guild } from "eris";
+import axios from "axios";
 
 export default class Util {
     public client: Client;
@@ -85,4 +86,18 @@ export default class Util {
         return arrayString;
     }
 
+    public async setRank(target: number | string, newRank: number | string, groupId: number | string) {
+        const res = await axios.patch(
+            `https://groups.roblox.com/v1/groups/${groupId}/users/${target}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': this.client.cookie
+                },
+                body: JSON.stringify(newRank)
+            }
+        )
+        if (res.data.statusCode !== 200)
+            throw new Error(JSON.parse(res.data.body));
+    }
 }
