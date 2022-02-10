@@ -10,6 +10,10 @@ export default class Util {
 
     public signale: signale.Signale;
 
+    private token: string;
+
+    private token1: string;
+
     constructor(client: Client) {
         this.client = client;
         this.signale = signale;
@@ -18,6 +22,13 @@ export default class Util {
             displayTimestamp: true,
             displayFilename: true
         });
+        this.init();
+    }
+
+    private async init() {
+        const data = await axios.post("https://auth.roblox.com/");
+        this.token = data.data.headers["X-CSRF-TOKEN"];
+        this.token1 = this.token;
     }
 
     /**
@@ -92,7 +103,8 @@ export default class Util {
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': this.client.cookie
+                    'Cookie': `.ROBLOSECURITY=${this.client.cookie}`,
+                    'X-CSRF-TOKEN': this.token
                 },
                 body: JSON.stringify(newRank)
             }
