@@ -26,16 +26,21 @@ export default class Util {
     }
 
     private async init() {
-        const data = await axios.post(
-            "https://auth.roblox.com/",
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Cookie': `.ROBLOSECURITY=${this.client.cookie}`,
+        let data;
+        try {
+            data = await axios.post(
+                "https://auth.roblox.com/",
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cookie': `.ROBLOSECURITY=${this.client.cookie}`,
+                    }
                 }
-            }
-        );
-        this.token = data.data.headers["X-CSRF-TOKEN"];
+            );
+        } catch(e){
+            console.log(data)
+        }
+        this.token = data.headers["X-CSRF-TOKEN"];
         this.token1 = this.token;
     }
 
