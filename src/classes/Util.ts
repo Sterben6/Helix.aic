@@ -26,7 +26,15 @@ export default class Util {
     }
 
     private async init() {
-        const data = await axios.post("https://auth.roblox.com/");
+        const data = await axios.post(
+            "https://auth.roblox.com/",
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cookie': `.ROBLOSECURITY=${this.client.cookie}`,
+                }
+            }
+        );
         this.token = data.data.headers["X-CSRF-TOKEN"];
         this.token1 = this.token;
     }
