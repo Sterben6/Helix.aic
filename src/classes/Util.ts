@@ -38,9 +38,8 @@ export default class Util {
                 }
             );
         } catch(e){
-            console.log(data)
+            this.token = e[0].response.headers['x-csrf-token'];
         }
-        this.token = data.headers["X-CSRF-TOKEN"];
         this.token1 = this.token;
     }
 
