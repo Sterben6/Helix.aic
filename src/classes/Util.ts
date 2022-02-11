@@ -33,7 +33,7 @@ export default class Util {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Cookie': `.ROBLOSECURITY=${this.client.cookie}`,
+                        Cookie: `.ROBLOSECURITY=${this.client.cookie}`,
                     }
                 }
             );
