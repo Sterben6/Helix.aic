@@ -26,9 +26,8 @@ export default class Util {
     }
 
     private async init() {
-        let data;
         try {
-            data = await axios.post(
+            await axios.post(
                 "https://auth.roblox.com/",
                 {
                     headers: {
@@ -115,7 +114,7 @@ export default class Util {
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Cookie': `.ROBLOSECURITY=${this.client.cookie}`,
+                    Cookie: `.ROBLOSECURITY=${this.client.cookie}`,
                     'X-CSRF-TOKEN': this.token
                 },
                 body: JSON.stringify(newRank)
