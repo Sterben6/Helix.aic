@@ -20,21 +20,25 @@ export default class app extends Route {
             const mainRank = await noblox.getRankInGroup(13070896,Id);
             const teamsArray: string[] = [];
 
+            if (mainRank == 20 || mainRank < 30) {
+                teamsArray.push("Test Subjects");
+                return res.status(200).json(teamsArray);
+            }
+
             for (let group of groups) {
-                if(!group.Id) continue;
-                console.log(group.Id);
-                console.log(group.Id.toString());
-                console.log(Object.keys(this.validTeams));
                 if (!Object.keys(this.validTeams).includes(group.Id.toString())) continue;
                 if (this.validTeams[group.Id])
                     teamsArray.push(this.validTeams[group.Id]);
             }
             if (mainRank >= 30) teamsArray.push("Foundation Personnel");
-            else teamsArray.push("Test Subjects");
 
             if (mainRank >= 60) teamsArray.push("Executive Personnel");
 
             return res.status(200).json(teamsArray);
+
+        })
+
+        this.router.get('/groups/:Id', async (req, res) => {
 
         })
     }
@@ -49,7 +53,9 @@ export default class app extends Route {
         13193646: "Combative Medical Unit",
         13193551: "Nuclear Engineering Branch",
         13459374: "Biohazard Control Division",
-        13260869: "Acting Employees"
+        13260869: "Acting Employees",
+        14198829: "Department of External Affairs",
+        14043320: "Janitorial Department"
     }
 }
 
