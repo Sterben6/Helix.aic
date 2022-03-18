@@ -55,7 +55,8 @@ export default class app extends Route {
         13459374: "Biohazard Control Division",
         13260869: "Acting Employees",
         14198829: "Department of External Affairs",
-        14043320: "Janitorial Department"
+        14043320: "Janitorial Department",
+        14255453: "Strategic Security Operations"
     }
 }
 
