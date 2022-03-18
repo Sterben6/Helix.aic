@@ -16,7 +16,7 @@ async function main(): Promise<void> {
     await client.loadEvents(eventFiles);
     // await client.loadCommands(commandFiles);
     // await client.connectDb();
-    // await noblox.setCookie(cookie);
+    await noblox.setCookie(cookie);
     await client.connect();
 
     client.shards.get(0).on(`disconnect`, async function() {
